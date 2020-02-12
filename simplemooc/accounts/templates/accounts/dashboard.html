@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container dash">
+    <div class="container-fluid">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {% block breadcrumb %}
+            <li class="breadcrumb-item"><a href="{% url 'accounts:dashboard' %}">Meu Painel</a></li>
+            {% endblock %}
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-xs-10 col-md-4 dash-list">
+            <ul class="list-unstyled">
+                <li class="account-heading">Meus Cursos</li>
+                {% for enrollment in enrollments %}
+                <li><a href="#" class="courses-enroll">{{ enrollment.course }}</a></li>
+                {% empty %}
+                <li>Nenhum curso cadastrado</li>
+                {% endfor %}
+                <li class="account-heading">Minha Conta</li>
+                <li><a href="{% url 'accounts:edit' %}">Editar Conta</a></li>
+                <li><a href="{% url 'accounts:editPassword' %}">Editar Senha</a></li>
+            </ul>
+        </div>
+        {% block dashboard_content %}
+        <div class="col col-md-6">
+            <p><strong>Nome</strong>: {{ user.get_full_name }}</p>
+            <span><strong>E-mail</strong>: {% if user.email %}{{ user.email }}{% else %} <span>Usuário sem email</span>{% endif %}</span>
+        </div>
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}

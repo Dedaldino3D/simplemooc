@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login - Simple Mooc{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mb-10 mt-5 rounded">
+            <h1 class="h4 mb-3 font-weight-normal text-center">Login</h1>
+            <form class="form-signin mt-5 mb-5" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="next">
+                <div class="p-2 mb-3 bg-white login">
+                    {{ form|crispy}}
+                    <button class="btn btn-primary btn-block" type="submit">Login</button>
+                    <div class="change-form-p">
+                        <p>Não é cadastrado? <a href="{% url 'accounts:register' %}">Clique
+                            aqui.</a></p>
+                        <p>Esqueceu a senha? <a href="{% url 'accounts:password_reset' %}">Nova senha.</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

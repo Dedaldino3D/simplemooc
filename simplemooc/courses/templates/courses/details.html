@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid pad-fluid">
+    <div class="container-fluid pad-content">
+        <h1 class="display-4">{{ course.name }}</h1>
+        <p class="lead">{{ course.description }}</p>
+        <hr class="my-4">
+        <a href="{% url 'courses:enrollment' course.slug %}" class="btn btn-primary btn-lg" role="button">Inscreva-se</a>
+    </div>
+</div>
+<div class="container mt-5 mb-5">
+    <h6 class="text-muted">SOBRE O CURSO</h6>
+    <hr>
+    <div class="row mt-4">
+        <div class="col col-12 col-md-8">
+            {{ course.about }}
+        </div>
+        <div class="col col-12 col-md-4">
+            {% if course.image %}
+            <img src="{{ course.image.url }}" alt="{{ course.name }}">
+            {% else %}
+            <img src="{% static 'img/courses/images/robot.png' %}" alt="{{ course.name }}">
+            {% endif %}
+            <hr class="my-4">
+            <p class="mt-5" style="font-size:1.3em;">Dúvidas?</p>
+            <p>
+                <a href="#duvidas" role="button" class="btn btn-info mb-5">Tira suas dúvidas</a>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col col-12 col-md-6">
+            {% if is_valid %}
+            <div class=" alert alert-success">
+                Você enviou os dados com sucesso
+            </div>
+            {% endif %}
+            <form method="POST" id="duvidas">
+                {% csrf_token %}
+                <fieldset>
+                    <div class="form-group">
+                        {{ form|crispy }}
+                        {% for field in form %}
+                        {% if field.errors %}
+                        <ul class="bg-danger">
+                            {% for error in field.errors %}
+                            <li>{{ error}}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+
+                    <button class="btn btn-outline-primary" type="submit">Enviar</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

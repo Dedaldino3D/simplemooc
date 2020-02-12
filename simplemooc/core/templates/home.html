@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid pad-fluid">
+    <div class="container-fluid pad-content">
+        <h1 class="display-4">Uma simples plataforma de ensino a distância</h1>
+        <p class="lead">O Simple Mooc visa simplificar o ensino a distância, provendo ferramentas objectivas e de facíl
+            uso para cursos a distância.</p>
+        <hr class="my-4">
+        <a href="#" class="btn btn-primary btn-lg" role="button">Saber mais</a>
+    </div>
+</div>
+<div class="container mt-5 mb-5">
+    <h6 class="text-muted">Video-aulas e materias digitais</h6>
+    <hr>
+    <div class="mb-4">
+        <h2 class="h6">Publique suas aulas</h2>
+    </div>
+    <div class="row mt-4">
+        <div class="col col-12 col-md-3">
+            <img src="{% static 'img/courses/images/robot.png' %}" alt="Imagem">
+        </div>
+        <div class="col col-12 col-md-9">
+            <p>O Simple Mooc tem um sistema simples e pratico para o professor disponibilize suas aulas e materias
+                digitais, como: pdfs, slides, imagens...</p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
