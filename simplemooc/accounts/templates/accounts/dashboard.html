@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
+{% load courses_tags %}
+
 {% block content %}
 
-<div class="container dash">
+<div class="container dash-cont">
     <div class="container-fluid">
         {% if messages %}
         {% for message in messages %}
@@ -17,26 +19,61 @@
             {% endblock %}
         </ol>
     </nav>
-    <div class="row">
-        <div class="col-xs-10 col-md-4 dash-list">
-            <ul class="list-unstyled">
-                <li class="account-heading">Meus Cursos</li>
-                {% for enrollment in enrollments %}
-                <li><a href="#" class="courses-enroll">{{ enrollment.course }}</a></li>
-                {% empty %}
-                <li>Nenhum curso cadastrado</li>
-                {% endfor %}
-                <li class="account-heading">Minha Conta</li>
-                <li><a href="{% url 'accounts:edit' %}">Editar Conta</a></li>
-                <li><a href="{% url 'accounts:editPassword' %}">Editar Senha</a></li>
-            </ul>
+    
+    <div class="row flex-nowrap">
+        <div class="col col-sm-4">
+            <div class="list-group list-unstyled dash-sadow">
+                <span class="list-group-item admin-color">Bem-vindo, {{ user }}</span>
+                {% block menu_options %}
+                {% my_courses user %}
+                <span class="list-group-item text-uppercase">Conta</span>
+                <a class="list-group-item" href="{% url 'accounts:edit' %}">
+                    <i class="fa fa-cog fa-fw"></i>&nbsp;
+                    Editar Conta
+                </a>
+                <a class="list-group-item" href="{% url 'accounts:editPassword' %}">
+                    <i class="fa fa-lock fa-fw"></i>&nbsp;
+                    Editar Senha
+                </a>
+                {% endblock %}
+            </div>
         </div>
         {% block dashboard_content %}
-        <div class="col col-md-6">
-            <p><strong>Nome</strong>: {{ user.get_full_name }}</p>
-            <span><strong>E-mail</strong>: {% if user.email %}{{ user.email }}{% else %} <span>Usuário sem email</span>{% endif %}</span>
+        <div class="row">
+            <div class="col-sm-12 mb-3">
+            {% for enrollment in enrollments %}
+                <div class="card">
+                    <div class="card-body">
+                    <div class="course-header">
+                        <a class="" href="{{ enrollment.course.get_absolute_url }}">
+                            {{enrollment.course}}
+                        </a>
+                        <span class="course-data">{{enrollment.course.start_date|date:'d/m/Y'|default:'Sem data'}}</span>
+                    </div>
+                    <p class="">{{ enrollment.course.description|linebreaks }}</p>
+                    <div class="d-flex justify-content-end mb-1 mt-2">
+                        <a class="p-2" href="#"><i class="fa fa-comments" aria-hidden="true"></i>
+                        Comentários
+                        </a>
+                        <a class="p-2" href="#"><i class="fa fa-share-alt" aria-hidden="true"></i>
+                        Partilhas
+                        </a>
+                    </div>
+                    <a href="{% url 'courses:announcements' enrollment.course.slug %}" class="btn btn-primary mr-1">Acessar</a>                
+                    <a href="{% url 'courses:undo_enrollment' enrollment.course.slug %}" class="btn btn-danger ml-1">Cancelar</a>
+                    </div>
+                </div>
+            {% empty %}
+                <aside class="justify-content-center">
+                    <span>Você não se cadastrou em um curso. </span>
+                    <p class="lead">Acesse os cursos disponíveis <a href="{% url 'courses:index' %}">aqui</a></p>
+                </aside>
+            </div>
+            {% endfor %}
         </div>
         {% endblock %}
     </div>
 </div>
 {% endblock %}
+
+

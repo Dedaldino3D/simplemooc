@@ -1,0 +1,34 @@
+{% extends "courses/course_dashboard.html" %}
+
+{% block breadcrumb %}
+	{{ block.super }}
+	<a class="breadcrumb-item" href="{% url 'accounts:dashboard' %}">{{ course }}</a>
+{% endblock %}
+{% block dashboard_content %}
+<div class="row no-gutters">
+{% for announcement in announcements %}
+	  <div class="col-sm-12">
+	    <div class="card">
+			<div class="card-body">
+			    <h5 class="card-title">{{ announcement.title }}</h5>
+			    <p class="card-text">{{ announcement.content|linebreaks }}</p>
+			    <p><i class="fa fa-comments" aria-hidden="true"></i>
+			    {% with comments_count=announcement.comments.count %}
+			    {{ comments_count }}
+			     Comentário{{ comments_count|pluralize }}
+			    {% endwith %}
+				</p>
+			</div>
+	    </div>
+	  </div>
+{% empty %}
+	<div class="col-sm-12">
+	    <div class="card">
+			<div class="card-body">
+				<p>Nenhum anúncio para este curso</p>
+			</div>
+	    </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

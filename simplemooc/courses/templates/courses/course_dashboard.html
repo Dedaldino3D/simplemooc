@@ -1,0 +1,24 @@
+{% extends "accounts/dashboard.html" %}
+
+{% block menu_options %}
+	<span class="list-group-item text-uppercase">
+		{{ course }}
+	</span>
+	<a class="list-group-item" href="#">
+		<i class="fa fa-graduation-cap" aria-hidden="true"></i>
+		Aulas e Materias
+	</a>
+	<a class="list-group-item" href="#">
+		<i class="fa fa-info" aria-hidden="true"></i>&nbsp;
+		Informações
+	</a>
+	<a class="list-group-item" href="#">
+		<i class="fa fa-envelope-open" aria-hidden="true"></i>&nbsp;
+		Anúncios
+	</a>
+	<a class="list-group-item" href="#">
+		<i class="fa fa-bullhorn" aria-hidden="true"></i>&nbsp;
+		Forúm de dúvidas
+	</a>
+	{{ block.super }}
+{% endblock %}

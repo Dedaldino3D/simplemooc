@@ -1,9 +1,37 @@
+/*body{
+    background-color: rgb(230, 255, 255);
+}*/
+a {
+   color: #6633FF;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+p , li, h1-6, span{
+    color: rgba(0,0,0,.7);
+}
+
+footer{
+    width: 100%;
+    height: 5rem;
+    background-color: rgba(15,25,36);
+    margin-top: 5rem;
+}
+
+footer p{
+       color: #e6ffff;
+}
+
+
 .container-fluid{
     padding-left:0;
-    padding-right:-20;
+    padding-right:0;
     margin:0;
 }
-.pad-content{
+
+/*.pad-content{
     padding-left: 10px;
     padding-right 10px;
 }
@@ -12,13 +40,13 @@
     padding-right:0;
     margin:0;
 }
-
+*/
 .bg-nav{
     background-color: rgb(15, 25, 36);
-    color: red;
+    color: #e6ffff;
 }
 
-.in-pesquisa{
+/*.in-pesquisa{
     margin-left: 5px;
 }
 .m-topo{
@@ -30,16 +58,7 @@
     margin-bottom: 15px;
 }
 
-.b-inter-row{
-    box-shadow: inset 0 0 3px rgba(0,0,0,.2);
-    padding: 1rem;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    margin-left: 8px;
-    margin-right: 8px;
-    padding: 0;
-}
-@include media-breakpoint-up(xs){
+/*@include media-breakpoint-up(xs){
     .img-row{
         margin-bottom: 15px;
     }
@@ -60,10 +79,10 @@
     width: 100%;
     height:100px;
 }
-
+*/
 
 /* Icones */
-
+/*
 .fa-plus{
     margin-right: 10px;
 }
@@ -91,19 +110,7 @@
 .fa-home, .fa-users, .fa-phone, .fa-tasks, .fa-lock{
     margin-right: 5px;
 }
-footer{
-    height: 200px;
-}
-footer.cop{
-    position: relative;
-    margin-top: 500px;
-
-}
-
-div.btn.col-xs-4{
-    margin-bottom: 0.4em;
-}
-
+*/
 /* Formulario Login */
 
 .change-form-p{
@@ -119,62 +126,55 @@ div.btn.col-xs-4{
     border-radius: 0.4em;
 
 }
+
+
 /* Dashboard*/
-
-.dash{
-    margin-top: 7em;
-    margin-bottom: 5em;
-}
-
-@media (min-width: 768px){
-    .dash, nav.breadcrumb{
-        margin-left: 2rem;
-    }
-
-}
-
-.dash-list{
-    border: 0.8em solid rgba(0,0,0,.3);
-    box-shadow: 0 0 5px rgba(0,0,0,.2);
-    border-radius: 10px;
-    border-top: 0.8em;
-    border-bottom: 0.8em;
-    border-left: 0.8em;
-    border-right: 0.8em;
-    margin-bottom: 3rem;
-    margin-right: 1rem;
-    padding:0;
-}
-.dash-list ul{
-    padding: 0;
-    margin-bottom: 0;
-}
-.dash-list:first-child li a{
-    padding: 0.7em;
-    text-decoration: none;
-}
-.dash-list:first-child li{
-    padding: 0.7em;
-}
-ul:nth-child(1) li:hover{
-    background-color: rgba(12,32,56,.1);
-    border-radius: 0 0 0 0;
-    color: #fff;
-}
-.dash-list ul li:nth-child(6){
-    border-radius: 0 0 0.7em 0.7em;
-}
-.dash-list ul li:nth-child(1), .dash-list ul li:nth-child(4){
-    background-color: #fff;
-    color: #000;
-    text-transform: uppercase;
-    font-weight: lighter;
-    border-bottom: 0.032em solid rgba(0,0,0,.4);
-}
 
 ol.breadcrumb a{
     text-decoration: none;
 }
-.breadcrumb{
-    background-color: #fff;
+
+.div-card{
+    border-radius: 5px;
+    border: solid 2px rgba(92,133,145,.2);
+    margin-bottom: 10px;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    box-shadow: 6px 6px 4px rgba(92,133,145,.3);
 }
+
+.dash-shadow{
+    box-shadow: 1px 1px 2px 1px rgba(15,15,35, .3); 
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dash-cont{
+    margin-top: 5rem;
+}
+
+.admin-color{
+    background-color: rgba(115,125,135);
+    color: #e6ffff;
+
+}
+
+.course-header{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.course-data{
+    font-size: .70em;
+    color: rgba(0,0,0,.2);
+}
+
+.list-group-item{
+    padding: .55em 1.14em; 
+}
+
+
+
+

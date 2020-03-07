@@ -1,0 +1,11 @@
+<span class="list-group-item text-uppercase">Meus Cursos</span>
+{% for enrollment in enrollments %}
+<a class="list-group-item" href="{% url 'courses:announcements' enrollment.course.slug %}">
+	<i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp;
+    {{ enrollment.course }}
+</a>
+{% empty %}
+<span class="list-group-item">Nenhum curso cadastrado</span>
+{% endfor %}
+
+

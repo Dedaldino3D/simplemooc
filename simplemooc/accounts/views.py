@@ -60,6 +60,8 @@ def auth_login(request):
                     return redirect('core:home')
                 else:
                     pass
+            else:
+                pass
         else:
             pass
     else:
